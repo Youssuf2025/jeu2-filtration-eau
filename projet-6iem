@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Jeu de Filtration de l’Eau</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>💧 Jeu interactif : Filtration de l’eau</h1>
+<p>Clique sur chaque étape pour voir l’eau se filtrer</p>
+
+<div class="systeme">
+  <div class="gobelet" id="step1">Gravier</div>
+  <div class="tube"></div>
+  <div class="gobelet" id="step2">Sable grossier</div>
+  <div class="tube"></div>
+  <div class="gobelet" id="step3">Sable fin</div>
+  <div class="tube"></div>
+  <div class="gobelet" id="step4">Charbon</div>
+  <div class="tube"></div>
+  <div class="gobelet" id="step5">Coton</div>
+</div>
+
+<div id="eau"></div>
+
+<button onclick="startGame()">▶️ Commencer</button>
+
+<div id="quiz" class="hidden">
+  <h2>❓ Quiz</h2>
+  <p>Quel matériau enlève les mauvaises odeurs ?</p>
+  <button onclick="answer(true)">Charbon</button>
+  <button onclick="answer(false)">Gravier</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+body {
+  font-family: Arial;
+  text-align: center;
+  background: #eaf4ff;
+}
+
+.systeme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
+}
+
+.gobelet {
+  width: 100px;
+  height: 120px;
+  border: 3px solid #333;
+  border-radius: 0 0 20px 20px;
+  background: #fff;
+  cursor: pointer;
+  line-height: 120px;
+}
+
+.tube {
+  width: 40px;
+  height: 10px;
+  background: gray;
+}
+
+#eau {
+  width: 20px;
+  height: 20px;
+  background: blue;
+  border-radius: 50%;
+  margin: 20px auto;
+  opacity: 0;
+}
+
+.flow {
+  animation: flow 2s linear forwards;
+}
+
+@keyframes flow {
+  0% { transform: translateX(-300px); opacity: 1; }
+  100% { transform: translateX(300px); opacity: 1; }
+}
+
+.hidden {
+  display: none;
+}
+Write to Nor Kasem
+function startGame() {
+  const eau = document.getElementById("eau");
+  eau.classList.add("flow");
+  eau.style.opacity = 1;
+
+  setTimeout(() => {
+    document.getElementById("quiz").classList.remove("hidden");
+  }, 2500);
+}
+
+function answer(correct) {
+  if (correct) {
+    alert("✅ Bonne réponse ! Le charbon filtre les odeurs.");
+  } else {
+    alert("❌ Essaie encore !");
+  }
+}
+Write to Nor Kasem
+
