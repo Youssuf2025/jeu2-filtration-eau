@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Parcours de l’eau</title>
+
+<style>
+body {
+  background: #0b3c5d;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+}
+
+#systeme {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.gobelet {
+  width: 90px;
+  height: 220px;
+  border: 3px solid white;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.label {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.eau {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  background: brown;
+  transition: height 2s linear, background 2s linear;
+}
+
+.clean { background: #cceeff; }
+.clear { background: #e6f9ff; }
+</style>
+</head>
+
+<body>
+
+<h1>💧 Le parcours de l’eau</h1>
+<p>Observe comment l’eau sale est filtrée</p>
+
+<div id="systeme">
+
+  <div>
+    <div class="gobelet"><div class="eau" id="e0"></div></div>
+    <div class="label">Eau sale</div>
+  </div>
+
+  <div>
+    <div class="gobelet"><div class="eau" id="e1"></div></div>
+    <div class="label">Graviers</div>
+  </div>
+
+  <div>
+    <div class="gobelet"><div class="eau" id="e2"></div></div>
+    <div class="label">Sable grossier</div>
+  </div>
+
+  <div>
+    <div class="gobelet"><div class="eau" id="e3"></div></div>
+    <div class="label">Sable fin</div>
+  </div>
+
+  <div>
+    <div class="gobelet"><div class="eau" id="e4"></div></div>
+    <div class="label">Charbon</div>
+  </div>
+
+  <div>
+    <div class="gobelet"><div class="eau" id="e5"></div></div>
+    <div class="label">Coton</div>
+  </div>
+
+</div>
+
+<br>
+<button onclick="demarrer()">▶️ Démarrer la filtration</button>
+
+<script>
+function demarrer() {
+  const couleurs = ["brown", "#8b6f47", "#9dd9f3", "#cceeff", "#e6f9ff", "#f5ffff"];
+
+  for (let i = 0; i < 6; i++) {
+    setTimeout(() => {
+      let eau = document.getElementById("e" + i);
+      eau.style.height = "100%";
+      eau.style.background = couleurs[i];
+    }, i * 1500);
+  }
+}
+</script>
+
+</body>
+</html>
